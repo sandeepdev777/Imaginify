@@ -12,7 +12,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
       <div className="root-container">
         <div className="wrapper">
-          <React.Fragment> // Wrap children prop inside a React fragment
+          <React.Fragment> 
             {children}
           </React.Fragment>
         </div>
