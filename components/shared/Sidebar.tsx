@@ -5,8 +5,7 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Button } from '../ui/button' // this is the shadcn button in the sidebar
-
+import { Button } from '../ui/button'
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -19,16 +18,16 @@ const Sidebar = () => {
         </Link>
 
         <nav className="sidebar-nav">
-        <SignedIn>
+          <SignedIn>
             <ul className="sidebar-nav_elements">
-              {navLinks.slice(0, 6).map((link) => {  // this will show the first 6 links in the sidebar
+              {navLinks.slice(0, 6).map((link) => {
                 const isActive = link.route === pathname
 
                 return (
-                  <li key={link.route} className={`sidebar-nav_element group ${ 
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'  // change in the color of link in side bar
+                  <li key={link.route} className={`sidebar-nav_element group ${
+                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
                   }`}>
-                    <Link className="sidebar-link" href={link.route}>   {/* each time when the links in the side bar is clicked it redirect to another page.*/}
+                    <Link className="sidebar-link" href={link.route}>
                       <Image 
                         src={link.icon}
                         alt="logo"
@@ -45,7 +44,7 @@ const Sidebar = () => {
 
 
             <ul className="sidebar-nav_elements">
-              {navLinks.slice(6).map((link) => {   // this drags the buycredits,profilepage etc to the bottom seperated from other links
+              {navLinks.slice(6).map((link) => {
                 const isActive = link.route === pathname
 
                 return (
@@ -67,19 +66,16 @@ const Sidebar = () => {
               })}
 
               <li className="flex-center cursor-pointer gap-2 p-4">
-                <UserButton afterSignOutUrl='/' showName /> {/**showname,userbutton are predefined components of clerk displays name and gives button to sign out */}
+                <UserButton afterSignOutUrl='/' showName />
               </li>
             </ul>
           </SignedIn>
 
-{/**Shadcn is a collection of beautifully designed, accessible, and customizable
- *  React components that you can use to build modern web applications with Next. js. */}
           <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover"> {/**this button component from shadcn */}
+            <Button asChild className="button bg-purple-gradient bg-cover">
               <Link href="/sign-in">Login</Link>
             </Button>
           </SignedOut>
-{/**aschild is name of prop which tells whether  the children of component should be rendered directly or as a DOM element  */}
         </nav>
       </div>
     </aside>
