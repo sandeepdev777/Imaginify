@@ -1,3 +1,7 @@
+
+// it contains utility/dynamic functions that are used across the application.
+
+
 /* eslint-disable prefer-const */
 /* eslint-disable no-prototype-builtins */
 import { type ClassValue, clsx } from "clsx";

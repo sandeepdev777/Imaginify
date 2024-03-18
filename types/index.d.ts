@@ -1,3 +1,5 @@
+// this file is used to declare the types of various props and parameters used in the application.
+ 
 /* eslint-disable no-unused-vars */
 
 // ====== USER PARAMS
