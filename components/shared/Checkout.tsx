@@ -1,5 +1,7 @@
 "use client";
 
+// this it the buycredits button on the buy credits page
+
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
 
@@ -48,6 +50,7 @@ const Checkout = ({
   }, []);
 
   const onCheckout = async () => {
+    // this takes all the details of the plan and sends it to the stripe checkout
     const transaction = {
       plan,
       amount,

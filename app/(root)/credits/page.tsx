@@ -1,3 +1,5 @@
+// this is the buy credits page
+
 import { SignedIn, auth } from "@clerk/nextjs";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -61,7 +63,7 @@ const Credits = async () => {
                 </Button>
               ) : (
                 <SignedIn>
-                  <Checkout
+                  <Checkout   //this the button to buy the credits
                     plan={plan.name}
                     amount={plan.price}
                     credits={plan.credits}

@@ -2,8 +2,11 @@
 import { createTransaction } from "@/lib/actions/transaction.action";
 import { NextResponse } from "next/server";
 import stripe from "stripe";
+// this webhook file STRIPE
 
+// this makes to he post request to the stripe 
 export async function POST(request: Request) {
+
   const body = await request.text();
 
   const sig = request.headers.get("stripe-signature") as string;
@@ -23,7 +26,7 @@ export async function POST(request: Request) {
   // CREATE
   if (eventType === "checkout.session.completed") {
     const { id, amount_total, metadata } = event.data.object;
-
+  // this is the data we send to our database after a successful payment
     const transaction = {
       stripeId: id,
       amount: amount_total ? amount_total / 100 : 0,
