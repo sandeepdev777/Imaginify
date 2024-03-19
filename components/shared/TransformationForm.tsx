@@ -33,6 +33,8 @@ import TransformedImage from "./TransformedImage"
 import { getCldImageUrl } from "next-cloudinary"
 import { addImage, updateImage } from "@/lib/actions/image.actions"
 import { useRouter } from "next/navigation"
+import { InsufficientCreditsModal } from "./InsufficientCreditsModal"
+import { useEffect } from "react"
 
  export const formSchema = z.object({  // since it is coming from zod we use z.object
  title: z.string(),   // this is how we define schema for form using zod
@@ -62,6 +64,7 @@ const TransformationForm = ({action,data=null,userId,type,creditBalance,config=n
     prompt: data?.prompt,
     publicId: data?.publicId,
   }:defaultValues
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -164,12 +167,12 @@ const TransformationForm = ({action,data=null,userId,type,creditBalance,config=n
           [fieldName === 'prompt' ? 'prompt' : 'to' ]: value 
         }
       }))
-    }, 1000)();
+    }, 1000)();  // self invoking function which calls the debounce
       
     return onChangeField(value)
   }
 
-  // after submitting the input to the form this func merges the new transformation with the existing transformation and then updates the credit balance of the user
+  // after submitting the input to the form this func merges the new transformation obj with the existing transformation obj and then updates the credit balance of the user
   const onTransformHandler = async () => {
     setIsTransforming(true)
 
@@ -183,10 +186,19 @@ const TransformationForm = ({action,data=null,userId,type,creditBalance,config=n
       await updateCredits(userId, creditFee)
     })
   }
+ // this actives the "transform image" button right after the image is uploaded in case of image restoration or background removal
+  useEffect(()=>{
+    if(image && (type==='restore' || type === 'removeBackground')) {
+      setNewTransformation(transformationType.config)
+    }
+  },[image,transformationType.config,type])
 
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+
+    {creditBalance<Math.abs(creditFee) && <InsufficientCreditsModal/>}   {/** checks the credit balance and accordingly renders the InsufficientCreditModal */}
+
     <CustomField 
           control={form.control}
           name="title"

@@ -7,7 +7,7 @@ import User from "../database/models/user.model";
 import Image from "../database/models/image.model";
 import { redirect } from "next/navigation";
 
-//import { v2 as cloudinary } from 'cloudinary'
+import { v2 as cloudinary } from 'cloudinary'
 
 const populateUser = (query: any) => query.populate({
   path: 'author',
@@ -64,7 +64,7 @@ export async function updateImage({ image, userId, path }: UpdateImageParams) {
   }
 }
 
-// DELETE IMAGE
+// deletes the previously transformed images.
 export async function deleteImage(imageId: string) {
   try {
     await connectToDatabase();
@@ -92,8 +92,8 @@ export async function getImageById(imageId: string) {
   }
 }
 
-// GET IMAGES
-/* export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
+// it helps to get all transformations history of user on the homepage
+ export async function getAllImages({ limit = 9, page = 1, searchQuery = '' }: {
   limit?: number;
   page: number;
   searchQuery?: string;
@@ -101,7 +101,7 @@ export async function getImageById(imageId: string) {
   try {
     await connectToDatabase();
 
-    cloudinary.config({
+    cloudinary.config({    // this is the cloudinary configuration coming from package cloudinary which takes all cloudinary environment details
       cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
       api_key: process.env.CLOUDINARY_API_KEY,
       api_secret: process.env.CLOUDINARY_API_SECRET,
@@ -114,7 +114,7 @@ export async function getImageById(imageId: string) {
       expression += ` AND ${searchQuery}`
     }
 
-    const { resources } = await cloudinary.search
+    const { resources } = await cloudinary.search   // func of cloudinary package
       .expression(expression)
       .execute();
 
@@ -130,7 +130,7 @@ export async function getImageById(imageId: string) {
       }
     }
 
-    const skipAmount = (Number(page) -1) * limit;
+    const skipAmount = (Number(page) -1) * limit;   // it sets the pagination limit to skip the amount of images
 
     const images = await populateUser(Image.find(query))
       .sort({ updatedAt: -1 })
@@ -150,7 +150,7 @@ export async function getImageById(imageId: string) {
   }
 }
 
-// GET IMAGES BY USER
+// this displays the images of the user on the profile page
 export async function getUserImages({
   limit = 9,
   page = 1,
@@ -179,4 +179,4 @@ export async function getUserImages({
   } catch (error) {
     handleError(error);
   }
-} */
+} 
