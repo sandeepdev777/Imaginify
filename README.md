@@ -1,6 +1,6 @@
 🌐 Live Demo
 
-Explore the live demonstration of the project: https://imaginify-two-weld.vercel.app/
+Explore the live demonstration of the project: [Imaginify](https://imaginify-two-weld.vercel.app/)
 
 📝 Description
 
@@ -19,17 +19,17 @@ Prerequisites:
 
 In order to install and run this project locally, you would need to have the following installed on your local machine.
 
-Node.js 
+[Node.js](https://nodejs.org/en/) 
 
-NPM 
+[NPM](https://docs.npmjs.com/getting-started) 
 
-Git
+[Git](https://git-scm.com/downloads)
 
 ⚙️ Installation and Run Locally
 
 Step 0:
 
-Note ‼️ the application uses Clerk for Authentication and User Management, therefore, you need to create Clerk account here and sets the CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY environment variables in .env file.
+Note ‼️ the application uses Clerk for Authentication and User Management, therefore, you need to create Clerk account [here](https://dashboard.clerk.com/sign-up) and sets the CLERK_PUBLISHABLE_KEY and CLERK_SECRET_KEY environment variables in .env file.
 
 Note ‼️ the application uses Mongo Db as database, therefore, you need to create Mongo DB atlas account.
 
