@@ -11,6 +11,7 @@ Imaginify is Image editing Ai Saas application built using Next.Js 14, Typescrip
 Imaginify is built using the following technologies:
 
 [![My Skills](https://skillicons.dev/icons?i=nextjs,ts,tailwind,mongodb)](https://skillicons.dev)
+
 🧰 Get Started
 
 To get this project up and running in your development environment, follow these step-by-step instructions.
