@@ -2,6 +2,12 @@
 
 Explore the live demonstration of the project: [Imaginify](https://imaginify-two-weld.vercel.app/)
 
+** Use the following credentials to login the app**
+
+email-sandeepdemo7128@gmail.com
+
+password- sandeep7128@
+
 📝 Description
 
 Imaginify is Image editing Ai Saas application built using Next.Js 14, Typescript, Tailwind Css, ShadCn, MongoDb, Clerk, Stripe.The app bascically provides various features like background removal, image color change , removing object from image, changing aspect ratio, etc. This features are bascically incorporated by integrating Cloudinary Ai with the app. The app also supports payment gateway to buy to tokens with the help of Stripe.
@@ -38,23 +44,24 @@ Step 1:
 
 Download or clone this repo by using the link below:
 
-git clone https://github.com/sandeepdev777/Imaginify.git
+```git clone https://github.com/sandeepdev777/Imaginify.git```
 
 step 2:
 
 Execute the following command in the root directory of the downloaded repo in order to install dependencies:
 
-npm install
+```npm install```
 
 Step 3:
 
 Execute the following command in order to run the development server locally:
 
-npm run dev
+```npm run dev```
 
 Step 4:
 
-Open http://localhost:3000 with your browser to see the result.
+Open ```http://localhost:3000``` with your browser to see the result.
+
 
 🔒 Environment Variables
 
